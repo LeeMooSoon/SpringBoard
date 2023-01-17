@@ -1,0 +1,13 @@
+<mapper namespace="wedatalab.bulletinboard.mapper.BoardMapper">
+
+
+    <select id="boardCount" resultType="int"> // id 와 BoardMapper.interface 의 메소드가 같음
+        SELECT count(boardId) AS cnt FROM tbl_board // 게시글 수 반환
+    </select>
+
+    <select id="getList" resultType="wedatalab.bulletinboard.domain.Board">
+        SELECT
+        *
+        FROM tbl_board //  게시글 리스트 반환
+    </select>
+</mapper>
