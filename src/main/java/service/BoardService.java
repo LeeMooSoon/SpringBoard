@@ -3,10 +3,11 @@ package service;
 import lombok.RequiredArgsConstructor;
 import main.springboard.domain.Board;
 import main.springboard.mapper.BoardMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.cassandra.CassandraProperties;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.PrintWriter;
 import java.util.List;
 
 @Service //서비스 명시
@@ -24,4 +25,20 @@ public class BoardService{
     public Board getBoard(Long boardId) {
         return boardMapper.getBoard(boardId);
     }
+    public void uploadBoard(Board board) {
+        boardMapper.uploadBoard(board);
+    }@Transactional
+    public void updateBoard(Board board ){
+        System.out.println(board.getContent());
+        System.out.println(board.getTitle());
+         boardMapper.updateBoard(board);
+    }
+    @Transactional
+    public void deleteBoard(Long boardId) {
+        boardMapper.deleteBoard((boardId));
+    }
+
+//    public void viewCount(Long boardId) {
+//        boardMapper.viewCount(boardId);
+//    }
 }

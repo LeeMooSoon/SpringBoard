@@ -8,19 +8,24 @@
 <body>
 <div class="container">
   <h1>SPRING TEST</h1>
+  <a style="float: right" th:href="@{/board/upload}">글작성</a>
   <table class="table table-hover">
     <thead>
     <th>글번호</th>
     <th>제목</th>
     <th>작성자</th>
     <th>내용</th>
+    <th>작성일</th>
     <th>조회수</th>
     </thead>
     <tr th:each="list :${list}">
-      <td>[[${list.boardId}]]</td>
+
+      <td>
+        <a th:href="@{/board/view(boardId=${list.boardId})}">[[${list.boardId}]]</a></td>
       <td>[[${list.title}]]</td>
       <td>[[${list.name}]]</td>
       <td>[[${list.content}]]</td>
+      <td>[[${list.createDate}]]</td>
       <td>[[${list.read}]]</td>
     </tr>
   </table>
